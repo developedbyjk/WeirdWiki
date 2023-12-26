@@ -82,6 +82,7 @@ export default function App() {
 						<span className="button-emoji">😲</span>
 						<span className="now">Now!</span>
 						<span className="get">Reveal New Article</span>
+						
 					</button>
 				</div>
 
