@@ -1,6 +1,6 @@
 import articlesData from '../data/articlesData'
 
-export default function getArticles(num, defNum = 4) {
+export default function getArticles() {
     const maxNum = articlesData.length
     const articleArray = []
     

@@ -1,24 +1,22 @@
 import React from "react"
 import getArticles from "./utilities/getArticles"
-import Button from "./components/Button"
+
 import Header from "./components/Header"
-import Linkbutton from "./components/Linkbutton"
+
 import colorlist from "./data/colorlist"
 
 export default function App() {
 
 	const [currentArticles, setCurrentArticles] = React.useState(getArticles)
-    const [currentLink, setCurrentLink] = React.useState(currentArticles[0].link)
-	console.log(currentLink)
+	
+
 	const [randomcolor, setRandomColor] = React.useState(getRandomColor())
+
 
 	function getRandomColor(){
 		 return colorlist[Math.floor(Math.random() *colorlist.length)]
 	}
 
-	React.useState(()=>{
-			setRandomColor(getRandomColor())
-	},[currentLink])
 
 
 	
@@ -28,15 +26,42 @@ export default function App() {
 			<>
 			
 			<div key={article.id} className="article">
-				<a href={article.link} target="_blank">
+				<span id="emoji">{article.emoji}</span>
+			
+					<h2>
 					{article.title}
-				</a>
-				<button>Read now</button>
+					</h2>
+			
+				<div id="readbtn" 
+				style={
+					{
+						
+						border: "2px solid " + randomcolor
+					}
+				}
+				>
+					<a 
+					style={
+						{
+							color: randomcolor,
+						}
+					}
+					href={article.link} target="_blank">
+					Read now
+					</a>
+					</div>
+
 			</div>
 		
 			</>		
 		)			
 	})	
+
+
+	function changeColorAndArticle(){
+		setCurrentArticles(getArticles);
+		setRandomColor(getRandomColor());
+	}
 	
 	return (
 		<div className="wrapper">
@@ -48,11 +73,18 @@ export default function App() {
 
 					</div>
 					
-				
-				<Button
-					randomcolor = {randomcolor}
-					setCurrentArticles={setCurrentArticles}
-				/>
+			
+
+				<div className="button-container" style={
+					{backgroundColor: randomcolor}
+				} >
+					<button onClick={() => changeColorAndArticle()}>
+						<span className="button-emoji">😲</span>
+						<span className="now">Now!</span>
+						<span className="get">Reveal New Article</span>
+					</button>
+				</div>
+
 			</main>
 		</div>
 	)
