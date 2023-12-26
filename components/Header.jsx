@@ -6,7 +6,7 @@ export default function Header({randomcolor}) {
         <header style={
             {backgroundColor: randomcolor}
         }>
-		    <img src="./images/wikipedia-w.svg" />
+		    <img src="https://i.postimg.cc/vHxtG08L/wikipedia-w.png" />
 			<h1>Weird Wikipedia Articles</h1>
 		</header>
     )
